@@ -1,10 +1,10 @@
 class RankingsController < ApplicationController
   def index
-    @digests = build_digests(params[:character])
+    @digests = build_digests(params[:character], params[:region], params[:server])
   end
 
-  def build_digests(charecter_name)
-    rankings = WarcraftLogsService.rankings(charecter_name)
+  def build_digests(charecter_name, region, server)
+    rankings = WarcraftLogsService.rankings(charecter_name, region, server)
     rankings.map do |ranking|
       item_ids = ranking['gear'].map { |gear| gear['id'] }
                                 .compact

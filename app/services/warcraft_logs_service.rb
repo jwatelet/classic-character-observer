@@ -13,8 +13,8 @@ class WarcraftLogsService
     JSON.parse(response.body)
   end
 
-  def self.rankings(character_name)
-    response = RestClient.get("#{BASE_URL}/rankings/character/#{CGI.escape(character_name)}/#{SERVER_NAME}/#{REGION}", { params: { api_key: ENV['WARCRAFT_LOGS_CLIENT_KEY'], includeCombatantInfo: true, timeframe: 'today' } })
+  def self.rankings(character_name, region, server)
+    response = RestClient.get("#{BASE_URL}/rankings/character/#{CGI.escape(character_name)}/#{server}/#{region}", { params: { api_key: ENV['WARCRAFT_LOGS_CLIENT_KEY'], includeCombatantInfo: true, timeframe: 'today' } })
     JSON.parse(response.body)
   end
 

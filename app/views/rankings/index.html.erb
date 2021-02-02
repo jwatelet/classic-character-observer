@@ -1,25 +1,28 @@
-<div class="container">
-    <h1> <%= @digests&.first[:characterName]%>  </h1>
-
-    <ul>
-      <% @digests.each do |digest| %>
-        <li>
-          <div> <%= digest[:encounterName] %></div>
-          <span> <%= digest[:playerClass] %></span>
-          <span> <%= digest[:spec] %></span>
-          <div>
-            <% digest[:itemIds].each do |itemId|%>
-              <a href="https://classic.wowhead.com/item=<%= itemId-%>"></a>
-            <% end %>
-          </div>
-          <div>
+<div>
+  <h1> <%= @digests&.first[:characterName]%> </h1>
+  <div class="card-columns">
+    <% @digests.each do |digest| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= digest[:encounterName] %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= digest[:playerClass] %> <%= digest[:spec] %></h6>
+        <div>
+          <% digest[:itemIds].each do |itemId|%>
+          <a href="https://classic.wowhead.com/item=<%= itemId-%>"></a>
+          <% end %>
+        </div>
+        <table class="table">
+          <tbody>
             <% digest[:statTotal].each do |stat| %>
-              <div>
-                <%= stat[0].to_s %> : <%= stat[1]%>
-              </div>
+            <tr>
+              <th scope="row" style="width: 16.66%"> <%= stat[0].to_s %></th>
+              <td><%= stat[1]%></td>
+            </tr>
             <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
