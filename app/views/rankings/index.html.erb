@@ -1,0 +1,25 @@
+<div class="container">
+    <h1> <%= @digests&.first[:characterName]%>  </h1>
+
+    <ul>
+      <% @digests.each do |digest| %>
+        <li>
+          <div> <%= digest[:encounterName] %></div>
+          <span> <%= digest[:playerClass] %></span>
+          <span> <%= digest[:spec] %></span>
+          <div>
+            <% digest[:itemIds].each do |itemId|%>
+              <a href="https://classic.wowhead.com/item=<%= itemId-%>"></a>
+            <% end %>
+          </div>
+          <div>
+            <% digest[:statTotal].each do |stat| %>
+              <div>
+                <%= stat[0].to_s %> : <%= stat[1]%>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+</div>

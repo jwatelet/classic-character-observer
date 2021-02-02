@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>Alliance Classes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @classes.each do |classe| %>
+            <tr>
+                <td><%= classe[:name]%></td>
+                <td><%= classe[:specs]%></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
